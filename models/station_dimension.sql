@@ -8,7 +8,6 @@ with bike as (
         from {{ source('demo', 'bike') }}
     where
         ride_id != 'ride_id'
-    limit 10
 )
 select  *
     from bike
