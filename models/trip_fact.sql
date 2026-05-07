@@ -1,13 +1,13 @@
 with trips as (
     select
         ride_id,
-        rideable_type,
+        --rideable_type,
         date(to_timestamp(started_at)) as trip_date,
         start_statio_id as stattion_id,
         end_station_id,
         member_casual,
         timestampdiff(second, to_timestamp(ended_at), to_timestamp(ended_at)) as trip_duration_seconds      
-        from {{ source('demo', 'bike') }}
+        from {{ ref('stg_bike') }}
     where
         ride_id != 'ride_id'
 )
